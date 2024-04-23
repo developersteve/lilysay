@@ -13,9 +13,9 @@
       "Docker": {
         "Entrypoint": [
           "/usr/games/cowsay",
-          {{if .Message}}{{.Message}}{{else}}"Pass me an input called Message, like lilypad run cowsay:v0.0.2 -i Message=moo"{{end}}
+          {{if .Message}}{{.Message}}{{else}}"Pass me an input called Message, like lilypad run lilypadnetwork/lilysay:v0.0.1 -i Message=moo"{{end}}
         ],
-        "Image": "lilypadnetwork/lilysay:0.0.1"
+        "Image": "lilypadnetwork/lilysay:0.0.1@sha256:5c34d171da8a909591f7b590261714ddf56f83004210c7b927a5cf19d4e631a8"
       },
       "Engine": "Docker",
       "Network": {
