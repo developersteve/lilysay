@@ -1,7 +1,4 @@
-FROM alpine
-
-# Install perl, needed by cowsay
-RUN apk add --no-cache perl
+FROM grycap/cowsay:latest
 
 # Copy the cowsay binary to bin
 COPY cowsay /usr/local/bin/cowsay
