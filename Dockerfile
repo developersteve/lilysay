@@ -1,17 +1,13 @@
 FROM grycap/cowsay:latest
 
-# Copy the cowsay binary to bin
-COPY cowsay /usr/local/bin/cowsay
-
-# Make sure cowsay is executable
-RUN chmod +x /usr/local/bin/cowsay
-
 # Copy both cow files
-COPY lilypad.cow /usr/local/share/cows/lilypad.cow
-COPY lilyfrog.cow /usr/local/share/cows/lilyfrog.cow
+COPY lilypad.cow /usr/share/cowsay/cows/lilypad.cow
+COPY lilyfrog.cow /usr/share/cowsay/cows/lilyfrog.cow
 
-# Set a symbolic link that can be changed at runtime
-RUN ln -s /usr/local/share/cows/lilypad.cow /usr/local/share/cows/default.cow
+# Remove the existing symbolic link if it exists
+RUN rm -f /usr/share/cowsay/cows/default.cow
 
-# Use a single entrypoint command that handles the symbolic link and cowsay execution
-ENTRYPOINT ["/bin/sh", "-c", "ln -sf /usr/local/share/cows/${COWFILE:-lilypad}.cow /usr/local/share/cows/default.cow && exec /usr/local/bin/cowsay \"$@\"", "cowsay"]
+# Set a new symbolic link that can be changed at runtime
+RUN ln -s /usr/share/cowsay/cows/lilypad.cow /usr/share/cowsay/cows/default.cow
+
+ENTRYPOINT ["/bin/sh", "-c", "ln -sf /usr/share/cowsay/cows/${COWFILE:-lilypad}.cow /usr/share/cowsay/cows/default.cow && if [ -z \"$1\" ]; then echo \"Pass me an input called Message, like: docker run <container> 'moo'\"; else /usr/games/cowsay \"$1\"; fi"]
