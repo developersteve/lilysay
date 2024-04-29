@@ -14,7 +14,7 @@
         "Entrypoint": [
           "/bin/sh", 
           "-c", 
-          "ln -sf /usr/share/cowsay/cows/${COWFILE:-lilypad}.cow /usr/share/cowsay/cows/default.cow && if [ -z \\\"$1\\\" ]; then echo \\\"Pass me an input called Message, like: lilypad run lilypadnetwork/lilysay:v0.0.1 'moo'\\\"; else /usr/games/cowsay \\\"$1\\\"; fi"
+          "ln -sf /usr/share/cowsay/cows/${COWFILE:-lilypad}.cow /usr/share/cowsay/cows/default.cow && if [ -z \"$1\" ] || [ -z \"$2\" ]; then echo \"Pass me inputs called Message and template, like: lilypad run github.com/developersteve/lilysay:latest -i Message='test' -i template='lilyfrog'\"; else ln -sf /usr/share/cowsay/cows/$(if [ \"$2\" = \"lilyfrog\" ]; then echo \"lilyfrog\"; else echo \"lilypad\"; fi).cow /usr/share/cowsay/cows/default.cow && /usr/games/cowsay \"$1\"; fi"
         ],
         "Image": "lilypadnetwork/lilysay:0.0.3@sha256:c074de4a788b549ba2c79679555629a503816aaabc29da96e53faa6bc3e7f689"
       },
