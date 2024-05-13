@@ -12,7 +12,7 @@
       },
       "Docker": {
         "Entrypoint": [
-          "/usr/games/cowsay",
+          "/bin/sh", "-c", "ln -sf /usr/share/cowsay/cows/${IMAGE:-$DEFAULT_IMAGE}.cow /usr/share/cowsay/cows/default.cow && /usr/games/cowsay",
           {{if .Message}}{{.Message}}{{else}}"Pass me an input called Message, like lilypad run lilypadnetwork/lilysay:v0.0.5 -i Message=moo"{{end}}
         ],
        "EnvironmentVariables": [
