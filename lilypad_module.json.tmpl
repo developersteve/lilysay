@@ -15,8 +15,8 @@
           "/usr/games/cowsay"
         ],
         "EnvironmentVariables": [
-          {{ if .Image }}"{{ subst "DEFAULT_IMAGE=%s" .Image }}",{{ end }},
-          {{ if .Message }}"{{ subst "DEFAULT_MESSAGE=%s" .Message }}",{{ end }},          
+          {{ if .Image }}"{{ subst "DEFAULT_IMAGE=%s" .Image }}"{{ end }},
+          {{ if .Message }}"{{ subst "DEFAULT_MESSAGE=%s" .Message }}"{{ end }},          
           ,
           "{{if .Message}}{{.Message}}{{else}}Pass me an input called Message, like lilypad run lilypadnetwork/lilysay:v0.1.3 -i Message=moo{{end}}"
         ],
