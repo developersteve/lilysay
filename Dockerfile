@@ -15,7 +15,9 @@ ENV DEFAULT_MESSAGE="Hello World"
 ENV DEFAULT_IMAGE="lilypad"
 
 # Set the entry point to dynamically link the cow file and run cowsay
-ENTRYPOINT ["/bin/sh", "-c", "ln -sf /usr/share/cowsay/cows/${1:-$DEFAULT_IMAGE}.cow /usr/share/cowsay/cows/default.cow && /usr/games/cowsay \"$0\""]
+# Note: Corrected environment variable and parameter handling
+ENTRYPOINT ["/bin/sh", "-c", "ln -sf /usr/share/cowsay/cows/${IMAGE:-$DEFAULT_IMAGE}.cow /usr/share/cowsay/cows/default.cow && /usr/games/cowsay \"$MESSAGE\""]
 
-# Set default argument values
-CMD ["$DEFAULT_MESSAGE"]
+# Set default environment variables
+ENV MESSAGE="$DEFAULT_MESSAGE"
+ENV IMAGE="$DEFAULT_IMAGE"
