@@ -16,7 +16,7 @@
           {{if .Message}}{{.Message}}{{else}}"Pass me an input called Message, like lilypad run lilypadnetwork/lilysay:v0.0.5 -i Message=moo"{{end}}
         ],
        "EnvironmentVariables": [
-          {{ if .Image }}"{{ subst "Image=%s" .Image }}"{{ end }}
+          {{ if .Image }}"{{ subst "IMAGE=%s" .Image }}"{{ end }}
         ],
         "Image": "lilypadnetwork/lilysay:0.0.5@sha256:a3a55a5096b80cdaa838ba3c7172b21f78fdab1fb809185a82301aa94735233b"
       },
