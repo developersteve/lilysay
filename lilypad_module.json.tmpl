@@ -17,8 +17,8 @@
           "ln -sf /usr/share/cowsay/cows/${IMAGE:-default}.cow /usr/share/cowsay/cows/default.cow && /usr/games/cowsay \"$MESSAGE\""
         ],
         "EnvironmentVariables": [
-          "{{ if .Image }}IMAGE={{.Image}}{{ end }}",
-          "{{ if .Message }}MESSAGE={{.Message}}{{ end }}"
+          "{{ if .Image }}\"IMAGE={{.Image}}\",{{ end }}"
+          "{{ if .Message }}\"MESSAGE={{.Message}}\"{{ end }}"
         ],
         "Image": "lilypadnetwork/lilysay:0.0.5@sha256:a3a55a5096b80cdaa838ba3c7172b21f78fdab1fb809185a82301aa94735233b"
       },
