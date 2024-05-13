@@ -16,7 +16,7 @@
         ],
         "EnvironmentVariables": [
           {{ if .Image }}"{{ subst "DEFAULT_IMAGE=%s" .Image }}",{{ end }}
-          {{ if .Message }}"{{ subst "DEFAULT_MESSAGE=%s" .Message }}",{{ end }}
+          {{ if .Message }}"{{ subst "DEFAULT_MESSAGE=%s" .Message }}"{{ end }}
         ],
         "Image": "lilypadnetwork/lilysay:0.0.5@sha256:ba0af4f0b8622fbe801e056c39205192cc50dc4e528e723909907937d6cc4b43"
       },
