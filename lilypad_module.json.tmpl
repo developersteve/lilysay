@@ -12,9 +12,11 @@
       },
       "Docker": {
         "Entrypoint": [
-          "/bin/sh", "-c", "if [ -z \"$1\" ]; then echo 'Pass me inputs like: lilypad run lilypadnetwork/lilysay:v0.0.3 -i Message=moo -i Cowfile=lilypad'; else /usr/games/cowsay -f /usr/share/cowsay/cows/${2:-lilypad}.cow \"$1\"; fi"
+          "{{if .Image}}/usr/share/cowsay/cows/{{.Image}}.cow{{else}}/usr/share/cowsay/cows/default.cow{{end}}",
+          "/usr/games/cowsay",
+          "{{if .Message}}{{.Message}}{{else}}Pass me an input called Message, like lilypad run lilypadnetwork/lilysay:v0.0.1 -i Message=moo{{end}}"
         ],
-        "Image": "lilypadnetwork/lilysay:0.0.3@sha256:c074de4a788b549ba2c79679555629a503816aaabc29da96e53faa6bc3e7f689"
+        "Image": "lilypadnetwork/lilysay:0.0.4@sha256:a3a55a5096b80cdaa838ba3c7172b21f78fdab1fb809185a82301aa94735233b"
       },
       "Engine": "Docker",
       "Network": {
