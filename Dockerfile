@@ -3,6 +3,9 @@ FROM grycap/cowsay:latest
 # Copy both cow files
 COPY lilypad.cow /usr/share/cowsay/cows/lilypad.cow
 COPY lilyfrog.cow /usr/share/cowsay/cows/lilyfrog.cow
+COPY lilycorn.cow /usr/share/cowsay/cows/lilycorn.cow
+COPY lilyduck.cow /usr/share/cowsay/cows/lilyduck.cow
+COPY lilyrocket.cow /usr/share/cowsay/cows/lilyrocket.cow
 
 # Remove the existing symbolic link if it exists
 RUN rm -f /usr/share/cowsay/cows/default.cow
